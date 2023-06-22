@@ -9,3 +9,5 @@ CMD ["mongod"]
 
 # Exponha a porta padrão do MongoDB (27017) para acesso externo
 EXPOSE 27017
+
+CMD docker composer up 
