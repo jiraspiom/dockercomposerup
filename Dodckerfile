@@ -5,11 +5,12 @@
 FROM mongo:latest
 
 # Defina o comando para iniciar o MongoDB quando o contêiner for iniciado
-CMD ["mongod", "--auth"]
+#CMD ["mongod", "--auth"]
+CMD ["mongod"]
 
 # Exponha a porta padrão do MongoDB (27017) para acesso externo
 EXPOSE 27017
 
 # Adicione a criação de um usuário para acessar a string de conexão
-ENV MONGO_INITDB_ROOT_USERNAME=gbs
-ENV MONGO_INITDB_ROOT_PASSWORD=123
+#ENV MONGO_INITDB_ROOT_USERNAME=gbs
+#ENV MONGO_INITDB_ROOT_PASSWORD=123
