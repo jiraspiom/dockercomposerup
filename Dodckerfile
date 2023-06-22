@@ -11,6 +11,7 @@ CMD ["mongod"]
 # Exponha a porta padrão do MongoDB (27017) para acesso externo
 EXPOSE 27017
 
+CMD ["docker-compose up"]
 # Adicione a criação de um usuário para acessar a string de conexão
 #ENV MONGO_INITDB_ROOT_USERNAME=gbs
 #ENV MONGO_INITDB_ROOT_PASSWORD=123
