@@ -1,17 +1,17 @@
 # Use a imagem oficial do MongoDB
-# >docker build -t meu-mongodb .
-# >docker run -d -p 27017:27017 meu-mongodb
-
 FROM mongo:latest
 
-# Defina o comando para iniciar o MongoDB quando o contêiner for iniciado
-#CMD ["mongod", "--auth"]
-CMD ["mongod"]
+# Copie o arquivo meu_comando.sh para o contêiner
+COPY meu_comando.sh /app/meu_comando.sh
 
-# Exponha a porta padrão do MongoDB (27017) para acesso externo
-EXPOSE 27017
+# Defina o diretório de trabalho
+WORKDIR /app
 
-CMD ["docker-compose up"]
-# Adicione a criação de um usuário para acessar a string de conexão
-#ENV MONGO_INITDB_ROOT_USERNAME=gbs
-#ENV MONGO_INITDB_ROOT_PASSWORD=123
+# Dê permissão de execução ao arquivo meu_comando.sh
+RUN chmod +x meu_comando.sh
+
+# Instale o Docker no contêiner
+RUN apt-get update && apt-get install -y docker.io
+
+# Execute o comando meu_comando.sh e, em seguida, o comando docker-compose up
+CMD ./meu_comando.sh && docker-compose up
